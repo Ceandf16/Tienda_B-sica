@@ -3,8 +3,10 @@ import './Vista_principal.css'
 import Listar_Producto from './Lista_Producto';
 function ModalRegistro() {
   const [modalVisible, setModalVisible] = useState(false);
+  
   // DATOS CELL//\
   const [datosCell, setDatosCell] = useState({
+    id:'',
     descripcion: '',
     marca: '',
     modelo: '',
@@ -17,18 +19,27 @@ function ModalRegistro() {
     const { name, value } = e.target;
     setDatosCell({ ...datosCell, [name]: value });
   };
+  const actualizarListaB = (nuevaLista) => {
+    serListaB(nuevaLista);
+  };
 
   const guardarProducto = () => {
-    serListaB((value) => [...value, datosCell]);
-    console.log("Producto:", { datosCell });
+
+    const nuevoId = listaB.length > 0 ? listaB[listaB.length - 1].id + 1 : 1;
+
+  // Crear un nuevo objeto de datosCell con el nuevo ID
+  const nuevoProducto = { ...datosCell, id: nuevoId };
+
+  // Agregar el nuevo producto a la listaB
+  serListaB((value) => [...value, nuevoProducto]);
     setDatosCell({
+      id:'',
       descripcion: '',
       marca: '',
       modelo: '',
       precio: '',
       imagenUrl: '',
     });
-    console.log("Datos clean");
   };
 
 
@@ -53,7 +64,7 @@ function ModalRegistro() {
         <div className="modal">
           <div className="modal-contenido">
             <form className="registro-formulario">
-
+              
               <div className="form-group">
                 <label htmlFor="marca">Marca:</label>
                 <input onChange={handleChange} value={datosCell.marca} type="text" id="marca" name="marca" required />
@@ -86,7 +97,7 @@ function ModalRegistro() {
         </div>
       )}
       <div>
-        <Listar_Producto datosForm={listaB} />
+        <Listar_Producto datosForm={listaB}  actualizarListaB={actualizarListaB} />
       </div>
     </div>
   );

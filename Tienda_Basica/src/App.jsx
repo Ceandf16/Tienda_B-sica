@@ -7,6 +7,7 @@ function App() {
   return (
             
     <Vista_Principal />
+    
   )
 }
 

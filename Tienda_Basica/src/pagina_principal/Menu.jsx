@@ -1,8 +1,7 @@
 import './Vista_principal.css'
 function Menu (){
     return(
-        <header>
-        
+        <header>        
         <nav>
           <ul>
             <li>
@@ -11,7 +10,6 @@ function Menu (){
             <li>
               <a href="#">ABOUT US</a>
             </li>
-           
           </ul>
         </nav>
         <div className="contenedor-buscador">

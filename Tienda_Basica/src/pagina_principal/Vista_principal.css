@@ -302,3 +302,58 @@ label {
   display: flex; /* Usamos flexbox para centrar los botones */
   justify-content: center; /* Centramos los elementos horizontalmente */
 }
+
+/*Gestion Producto*/
+.BtnGestionGuardar {
+  background-color: green; /* Color de fondo azul */
+  color: white; /* Color del texto blanco */
+  padding: 10px 20px; /* Espacio alrededor del texto */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor de tipo puntero al pasar por encima */
+  margin-right: 10px;
+}
+
+.BtnGestionGuardar:hover {
+  background-color: darkgreen; /* Cambio de color al pasar el ratón */
+}
+
+.BtnGestionCancelar {
+  background-color: red; /* Color de fondo azul */
+  color: white; /* Color del texto blanco */
+  padding: 10px 20px; /* Espacio alrededor del texto */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor de tipo puntero al pasar por encima */
+  margin-right: 10px;
+}
+
+.BtnGestionCancelar:hover {
+  background-color: darkred; /* Cambio de color al pasar el ratón */
+}
+.BtnGestionEliminar {
+  background-color: darkturquoise; /* Color de fondo azul */
+  color: white; /* Color del texto blanco */
+  padding: 10px 20px; /* Espacio alrededor del texto */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor de tipo puntero al pasar por encima */
+  margin-right: 10px;
+}
+
+.BtnGestionEliminar:hover {
+  background-color: darkcyan; /* Cambio de color al pasar el ratón */
+}
+.btnAccion {
+  background-color: salmon; /* Color de fondo azul */
+  color: white; /* Color del texto blanco */
+  padding: 10px 20px; /* Espacio alrededor del texto */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor de tipo puntero al pasar por encima */
+  margin-right: 10px;
+}
+
+.btnAccion:hover {
+  background-color: darksalmon; /* Cambio de color al pasar el ratón */
+}
