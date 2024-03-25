@@ -60,7 +60,7 @@ function ModalRegistro() {
       {modalVisible && (
         <div className="modal">
           <div className="modal-contenido">
-            <form className="registro-formulario" onSubmit={actualizarUsuario}>
+            <form className="registro-formulario" onSubmit={actualizarListaB}>
               <div className="form-group">
                 <label htmlFor="marca">Marca:</label>
                 <input
