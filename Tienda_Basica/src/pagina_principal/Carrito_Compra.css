@@ -1,0 +1,60 @@
+.product-detail {
+  width: 300px; /* Ancho del carrito */
+  border: 1px solid #ccc; /* Borde del carrito */
+  border-radius: 5px; /* Borde redondeado */
+  padding: 10px; /* Espaciado interno */
+
+  /* Centrar el carrito */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+}
+
+.title-container img {
+  width: 20px; /* Ajuste el tamaño del icono */
+  margin-right: 10px; /* Espaciado entre el icono y el texto */
+}
+
+.title {
+  font-size: 18px; /* Tamaño del título */
+}
+
+.my-order-content {
+  margin-top: 20px; /* Espacio entre el título y el contenido */
+}
+
+.shopping-cart {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; /* Espacio entre elementos del carrito */
+}
+
+.shopping-cart img {
+  width: 50px; /* Tamaño de la imagen del producto */
+}
+
+.primary-button {
+  display: block;
+  width: 100%;
+  padding: 10px 0; /* Espaciado interno del botón */
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff; /* Color de fondo del botón */
+  color: #fff; /* Color del texto del botón */
+  font-size: 16px; /* Tamaño del texto del botón */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transición suave al pasar el mouse */
+}
+
+.primary-button:hover {
+  background-color: #0056b3; /* Cambio de color al pasar el mouse */
+}

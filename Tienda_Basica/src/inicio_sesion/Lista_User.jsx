@@ -1,4 +1,4 @@
-export function Lista_User({ datosForm }) {
+export function Lista_User({ datosForm, editarUsuario, eliminarUsuario }) {
   return (
     <div>
       <div className="container">
@@ -9,6 +9,8 @@ export function Lista_User({ datosForm }) {
               <h2>{datoForm.nombreUser}</h2>
               <p>{datoForm.direccion}</p>
               <p className="precio">$: {datoForm.correo}</p>
+              <button onClick={() => editarUsuario(index)}>Editar</button>
+              <button onClick={() => eliminarUsuario(index)}>Eliminar</button>
             </div>
           </div>
         ))}

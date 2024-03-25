@@ -1,17 +1,17 @@
 import { useState } from "react";
-import './Vista_principal.css'
-import Listar_Producto from './Lista_Producto';
+import "./Vista_principal.css";
+import Listar_Producto from "./Lista_Producto";
 function ModalRegistro() {
   const [modalVisible, setModalVisible] = useState(false);
-  
+
   // DATOS CELL//\
   const [datosCell, setDatosCell] = useState({
-    id:'',
-    descripcion: '',
-    marca: '',
-    modelo: '',
-    precio: '',
-    imagenUrl: '',
+    id: "",
+    descripcion: "",
+    marca: "",
+    modelo: "",
+    precio: "",
+    imagenUrl: "",
   });
   const [listaB, serListaB] = useState([]);
 
@@ -24,24 +24,22 @@ function ModalRegistro() {
   };
 
   const guardarProducto = () => {
-
     const nuevoId = listaB.length > 0 ? listaB[listaB.length - 1].id + 1 : 1;
 
-  // Crear un nuevo objeto de datosCell con el nuevo ID
-  const nuevoProducto = { ...datosCell, id: nuevoId };
+    // Crear un nuevo objeto de datosCell con el nuevo ID
+    const nuevoProducto = { ...datosCell, id: nuevoId };
 
-  // Agregar el nuevo producto a la listaB
-  serListaB((value) => [...value, nuevoProducto]);
+    // Agregar el nuevo producto a la listaB
+    serListaB((value) => [...value, nuevoProducto]);
     setDatosCell({
-      id:'',
-      descripcion: '',
-      marca: '',
-      modelo: '',
-      precio: '',
-      imagenUrl: '',
+      id: "",
+      descripcion: "",
+      marca: "",
+      modelo: "",
+      precio: "",
+      imagenUrl: "",
     });
   };
-
 
   // Función para abrir el modal
   const abrirModal = () => {
@@ -53,51 +51,90 @@ function ModalRegistro() {
     setModalVisible(false);
   };
 
-
-
-
   return (
     <div>
-      <button className="boton" onClick={abrirModal}>Registrar Producto</button>
+      <button className="boton" onClick={abrirModal}>
+        Registrar Producto
+      </button>
 
       {modalVisible && (
         <div className="modal">
           <div className="modal-contenido">
-            <form className="registro-formulario">
-              
+            <form className="registro-formulario" onSubmit={actualizarUsuario}>
               <div className="form-group">
                 <label htmlFor="marca">Marca:</label>
-                <input onChange={handleChange} value={datosCell.marca} type="text" id="marca" name="marca" required />
+                <input
+                  onChange={handleChange}
+                  value={datosCell.marca}
+                  type="text"
+                  id="marca"
+                  name="marca"
+                  required
+                />
               </div>
               <div className="form-group">
                 <label htmlFor="modelo">Modelo:</label>
-                <input onChange={handleChange} value={datosCell.modelo} type="text" id="modelo" name="modelo" required />
+                <input
+                  onChange={handleChange}
+                  value={datosCell.modelo}
+                  type="text"
+                  id="modelo"
+                  name="modelo"
+                  required
+                />
               </div>
               <div className="form-group">
                 <label htmlFor="descripcion">Descripción:</label>
-                <input onChange={handleChange} value={datosCell.descripcion} type="text" id="descripcion" name="descripcion" required />
+                <input
+                  onChange={handleChange}
+                  value={datosCell.descripcion}
+                  type="text"
+                  id="descripcion"
+                  name="descripcion"
+                  required
+                />
               </div>
 
               <div className="form-group">
                 <label htmlFor="precio">Precio:</label>
-                <input onChange={handleChange} value={datosCell.precio} type="number" id="precio" name="precio" required />
+                <input
+                  onChange={handleChange}
+                  value={datosCell.precio}
+                  type="number"
+                  id="precio"
+                  name="precio"
+                  required
+                />
               </div>
 
               <div className="form-group">
                 <label htmlFor="imagen">URL de la Imagen:</label>
-                <input onChange={handleChange} value={datosCell.imagenUrl} type="text" id="imagenUrl" name="imagenUrl" required />              </div>
-
-
+                <input
+                  onChange={handleChange}
+                  value={datosCell.imagenUrl}
+                  type="text"
+                  id="imagenUrl"
+                  name="imagenUrl"
+                  required
+                />{" "}
+              </div>
             </form>
             <div className="botones-container">
-              <button className="btnRegistrarModal" onClick={guardarProducto}>Guardar</button>
-              <button className="modal-cerrar" onClick={cerrarModal}>Cerrar</button>
+              <button className="btnRegistrarModal" onClick={guardarProducto}>
+                Guardar
+              </button>
+              <button className="modal-cerrar" onClick={cerrarModal}>
+                Cerrar
+              </button>
             </div>
           </div>
         </div>
       )}
       <div>
-        <Listar_Producto datosForm={listaB}  actualizarListaB={actualizarListaB} />
+        <Listar_Producto
+          datosForm={listaB}
+          actualizarListaB={actualizarListaB}
+        />
       </div>
     </div>
   );
