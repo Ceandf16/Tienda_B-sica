@@ -6,6 +6,7 @@ import Inicio from "./inicio_sesion/Inicio.jsx";
 import FormUser from "./inicio_sesion/FormUser.jsx";
 import Carrito_Compra from "./pagina_principal/Carrito_Compra.jsx";
 export function App() {
+  ////pruwb
   return (
     <Router>
       <Routes>
