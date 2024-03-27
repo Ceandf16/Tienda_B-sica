@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Lista_User.css";
 import { Lista_User } from "./Lista_User.jsx";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 function FormUser() {
   const navigate = useNavigate();
   const [datosUser, setDatosUser] = useState({
@@ -10,24 +11,57 @@ function FormUser() {
     password: "",
     direccion: "",
   });
-  const [listaU, serListaU] = useState([]);
+  const [listaU, setListaU] = useState([]);
+
+  const [usuarioSeleccionado, setUsuarioSeleccionado] = useState(null);
+
+  useEffect(() => {
+    if (usuarioSeleccionado !== null) {
+      setDatosUser(usuarioSeleccionado);
+    } else {
+      setDatosUser({
+        nombreU: "",
+        correo: "",
+        password: "",
+        direccion: "",
+      });
+    }
+  }, [usuarioSeleccionado]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setDatosUser({ ...datosUser, [name]: value });
+    setDatosUser((prevDatos) => ({ ...prevDatos, [name]: value }));
   };
 
-  const guardarProducto = (event) => {
-    serListaU((value) => [...value, datosUser]);
-    event.preventDefault(); // Previene el comportamiento predeterminado del formulario
-    // Aquí puedes agregar la lógica para guardar los datos del usuario
-    console.log("Datos del usuario:", datosUser);
-    setDatosUser({
-      nombreU: "",
-      correo: "",
-      password: "",
-      direccion: "",
-    });
+  const guardarUsuario = (event) => {
+    event.preventDefault();
+    if (usuarioSeleccionado) {
+      // Actualizar usuario
+      const index = listaU.indexOf(usuarioSeleccionado);
+      const updatedList = listaU.map((item, idx) =>
+        idx === index ? { ...item, ...datosUser } : item
+      );
+      setListaU(updatedList);
+      setUsuarioSeleccionado(null);
+    } else {
+      // Guardar nuevo usuario
+      setListaU((value) => [...value, datosUser]);
+    }
   };
+
+  const editarUsuario = (index) => {
+    const usuarioSeleccionado = listaU[index];
+    setUsuarioSeleccionado(usuarioSeleccionado);
+  };
+
+  const cancelarEdicion = () => {
+    setUsuarioSeleccionado(null);
+  };
+
+  const eliminarUsuario = (index) => {
+    const newList = listaU.filter((_, i) => i !== index);
+    setListaU(newList);
+};
 
   const handleRegresarHome = () => {
     navigate("/"); // Navega al formulario de registro
@@ -35,7 +69,7 @@ function FormUser() {
   };
 
   //////LOCALSTORAGE////
-  const guardarProductoLocal =(event) =>{
+  const guardarUserLocalStorage =(event) =>{
     event.preventDefault();
     const usuario = {
       nombres: datosUser.nombreU,
@@ -55,7 +89,7 @@ function FormUser() {
   return (
     <div>
       <h2>Registro</h2>
-      <form onSubmit={guardarProductoLocal}>
+      <form onSubmit={guardarUserLocalStorage}>
         <label htmlFor="nombreU">Nombre:</label>
         <input
           onChange={handleChange}
@@ -95,12 +129,19 @@ function FormUser() {
         <button className="botonI" type="submit">
           Registrar
         </button>
+        <button className="botonI" type="button" onClick={cancelarEdicion}>
+          Cancelar Edición
+        </button>
         <button className="botonI" type="button" onClick={handleRegresarHome}>
           Volver al Inicio
         </button>
       </form>
       <div>
-        <Lista_User datosForm={listaU} />
+        <Lista_User
+          datosForm={listaU}
+          editarUsuario={editarUsuario}
+          eliminarUsuario={eliminarUsuario}
+        />
       </div>
     </div>
   );
